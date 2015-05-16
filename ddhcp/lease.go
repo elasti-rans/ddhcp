@@ -5,7 +5,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/ziutek/utils/netaddr"
+	"github.com/elasti-rans/utils/netaddr"
 )
 
 type lease struct {

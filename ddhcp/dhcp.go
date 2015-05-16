@@ -15,7 +15,6 @@ type server struct {
 }
 
 func New(rxAddr net.IP, leasesPool *LeasePool) (*server, error) {
-	// TODO: initialization need to be fixed, to init all attrs
 	l, err := net.ListenPacket("udp4", fmt.Sprintf("%s:69", rxAddr.String()))
 	if err != nil {
 		return nil, err
@@ -28,7 +27,7 @@ func (s *server) Close() {
 	s.conn.Close()
 }
 
-func Serve(s *server) {
+func (s *server) Serve() {
 	buffer := make([]byte, 1500)
 	for {
 		n, addr, err := s.conn.ReadFrom(buffer)
